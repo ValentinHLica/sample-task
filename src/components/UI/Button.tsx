@@ -1,16 +1,20 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 
 import classNames from "classnames";
 
 import styles from "../../styles/components/UI/button.module.scss";
 
 type Props = {
-  text: string;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   theme?: "light" | "primary" | "white" | "success";
+  text: string;
 };
 
-const Button = ({ text, theme = "light" }: Props) => (
-  <button className={classNames(styles.button, styles[`button__${theme}`])}>
+const Button = ({ text, theme = "light", type = "button" }: Props) => (
+  <button
+    type={type}
+    className={classNames(styles.button, styles[`button__${theme}`])}
+  >
     {text}
   </button>
 );
